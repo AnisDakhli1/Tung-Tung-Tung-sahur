@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tung Tung Tung Sahur Key Ring - Fun Ramadan Accessory</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <nav class="nav-bar">
+        <div class="nav-bar-logo">
+            <a href="#">
+                <h1>Tung Tung Tung Sahur</h1>
+            </a>
+        </div>
+        <ul class="nav-bar-list">
+            <li class="list-elem"><a href="#"><i class="fas fa-shopping-cart"></i> Buy Now</a></li>
+            <li class="list-elem"><a href="#features"><i class="fas fa-info-circle"></i> Features</a></li>
+            <li class="list-elem"><a href="#pricing"><i class="fas fa-tag"></i> Pricing</a></li>
+        </ul>
+    </nav>
+    
+    <main class="main-section">
+        <div class="container">
+            <div class="main-section-content">
+                <h1>Tung Tung Tung Sahur Key Ring</h1>
+                <p>Never miss sahur again! This fun key ring will remind you to wake up for your pre-dawn meal during Ramadan.</p>
+                <button class="btn"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                <button class="btn btn-secondary"><i class="fas fa-play"></i> Watch Demo</button>
+            </div>
+            <div class="main-section-image">
+                <img src="img/Tung-Tung-Tung-Sahur.webp" alt="Tung Tung Tung Sahur Key Ring" class="product-image">
+            </div>
+        </div>
+    </main>
+    
+    <section class="product-highlights" id="features">
+        <h2>Why You'll Love This Key Ring</h2>
+        <div class="highlight-container">
+            <div class="highlight-box">
+                <i class="fas fa-bell"></i>
+                <h3>Fun Reminder</h3>
+                <p>Jingle sound reminds you not to oversleep during sahur time!</p>
+            </div>
+            <div class="highlight-box">
+                <i class="fas fa-key"></i>
+                <h3>Durable Design</h3>
+                <p>Made with high-quality materials that last for years.</p>
+            </div>
+            <div class="highlight-box">
+                <i class="fas fa-gift"></i>
+                <h3>Perfect Gift</h3>
+                <p>Great Ramadan gift for friends and family.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="testimonials">
+        <h2>What People Are Saying</h2>
+        <div class="testimonial-container">
+            <div class="testimonial">
+                <i class="fas fa-quote-left" style="color: #c17441;"></i>
+                <p>"This key ring is so fun! My brother love the Tung Tung Sahur and it actually helps us wake up for sahur."</p>
+                <p><strong>- Ashraf Jebalia</strong></p>
+            </div>
+            <div class="testimonial">
+                <i class="fas fa-quote-left" style="color: #c17441;"></i>
+                <p>"Bought this as a gift for my brother. He loves it and now all his friends want one too!"</p>
+                <p><strong>- Amine Jebalia</strong></p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="pricing" id="pricing">
+        <h2>Get Yours Today</h2>
+        <div class="price-box">
+            <h3>Tung Tung Tung Sahur Key Ring</h3>
+            <div class="price">7 TND</div>
+            <p>+ FREE shipping if you buy two pices</p>
+            <button class="btn" style="width: 100%;"><i class="fas fa-shopping-cart"></i> Buy Now</button>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 Tung Tung Tung Sahur Key Ring. All Rights Reserved.</p>
+        <div class="social-icons" style="margin-top: 15px;">
+            <a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-instagram"></i></a>
+            <a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </footer>
+    
+    <script>
+        // Button click effect
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 150);
+            });
+        });
+        
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
