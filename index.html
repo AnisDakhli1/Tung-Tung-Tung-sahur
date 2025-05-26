@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +10,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 </head>
+
 <body>
     <nav class="nav-bar">
         <div class="nav-bar-logo">
@@ -23,21 +26,23 @@
             <li class="list-elem"><a href="#pricing"><i class="fas fa-tag"></i> Pricing</a></li>
         </ul>
     </nav>
-    
+
     <main class="main-section">
         <div class="container">
             <div class="main-section-content">
                 <h1>Tung Tung Tung Sahur Key Ring</h1>
-                <p>Never miss sahur again! This fun key ring will remind you to wake up for your pre-dawn meal during Ramadan.</p>
+                <p>Never miss sahur again! This fun key ring will remind you to wake up for your pre-dawn meal during
+                    Ramadan.</p>
                 <button class="btn"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-                <button class="btn btn-secondary"><i class="fas fa-play"></i> Watch Demo</button>
+                <button class="btn btn-secondary"><i class="fas fa-play"
+                        onclick="document.getElementById('bgMusic').play()"></i> Watch Demo</button>
             </div>
             <div class="main-section-image">
                 <img src="img/Tung-Tung-Tung-Sahur.webp" alt="Tung Tung Tung Sahur Key Ring" class="product-image">
             </div>
         </div>
     </main>
-    
+
     <section class="product-highlights" id="features">
         <h2>Why You'll Love This Key Ring</h2>
         <div class="highlight-container">
@@ -58,13 +63,14 @@
             </div>
         </div>
     </section>
-    
+
     <section class="testimonials">
         <h2>What People Are Saying</h2>
         <div class="testimonial-container">
             <div class="testimonial">
                 <i class="fas fa-quote-left" style="color: #c17441;"></i>
-                <p>"This key ring is so fun! My brother love the Tung Tung Sahur and it actually helps us wake up for sahur."</p>
+                <p>"This key ring is so fun! My brother love the Tung Tung Sahur and it actually helps us wake up for
+                    sahur."</p>
                 <p><strong>- Ashraf Jebalia</strong></p>
             </div>
             <div class="testimonial">
@@ -74,17 +80,23 @@
             </div>
         </div>
     </section>
-    
+
     <section class="pricing" id="pricing">
         <h2>Get Yours Today</h2>
         <div class="price-box">
             <h3>Tung Tung Tung Sahur Key Ring</h3>
             <div class="price">7 TND</div>
             <p>+ FREE shipping if you buy two pices</p>
-            <button class="btn" style="width: 100%;"><i class="fas fa-shopping-cart"></i> Buy Now</button>
+            <button class="btn" onclick="window.location.href='buying_card.html' " style="width: 100%;"><i class="fas fa-shopping-cart"></i> Buy Now</button>
         </div>
     </section>
-    
+
+    <audio id="bgMusic" loop></audio>
+    <source src="sound/Tung Tung Tung Sahur.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+    </audio>
+
+
     <footer>
         <p>&copy; 2025 Tung Tung Tung Sahur Key Ring. All Rights Reserved.</p>
         <div class="social-icons" style="margin-top: 15px;">
@@ -93,18 +105,18 @@
             <a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-whatsapp"></i></a>
         </div>
     </footer>
-    
+
     <script>
         // Button click effect
         document.querySelectorAll('.btn').forEach(button => {
-            button.addEventListener('click', function() {
+            button.addEventListener('click', function () {
                 this.style.transform = 'scale(0.95)';
                 setTimeout(() => {
                     this.style.transform = 'scale(1)';
                 }, 150);
             });
         });
-        
+
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -114,6 +126,14 @@
                 });
             });
         });
+        </script>
+        // Preload audio            
+        // Auto-play after first click (if needed)
+        document.body.addEventListener('click', () => {
+            const audio = document.getElementById('bgMusic');
+            audio.play().catch(e => console.log("Playback failed:", e));
+        }, { once: true }); // Runs only once
     </script>
 </body>
+
 </html>

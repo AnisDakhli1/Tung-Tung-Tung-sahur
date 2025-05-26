@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Tung Tung Tung Sahur Key Ring</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Additional styles for checkout page */
+        .checkout-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .checkout-form {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .checkout-form h2 {
+            color: #c17441;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #555;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #c17441;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(193, 116, 65, 0.2);
+        }
+
+        .order-summary {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .order-summary h2 {
+            color: #c17441;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+        }
+
+        .order-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .order-item img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .order-details h3 {
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .order-details p {
+            color: #c17441;
+            font-weight: bold;
+        }
+
+        .order-total {
+            text-align: right;
+            margin-top: 20px;
+            font-size: 1.2rem;
+        }
+
+        .order-total span {
+            color: #c17441;
+            font-weight: bold;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            margin-top: 20px;
+            padding: 15px;
+            font-size: 1.1rem;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-selector button {
+            background: #f8e8c1;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quantity-selector button:hover {
+            background: #c17441;
+            color: white;
+        }
+
+        .quantity-input {
+            width: 60px !important;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="nav-bar">
+        <div class="nav-bar-logo">
+            <a href="index.html">
+                <h1>Tung Tung Tung Sahur</h1>
+            </a>
+        </div>
+        <ul class="nav-bar-list">
+            <li class="list-elem"><a href="index.html"><i class="fas fa-arrow-left"></i> Back to Shop</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-section">
+        <div class="container">
+            <h1><i class="fas fa-shopping-cart"></i> Checkout</h1>
+
+            <div class="checkout-container">
+                <div class="checkout-form">
+                    <h2>Shipping Information</h2>
+                    <form id="checkoutForm">
+                        <div class="form-group">
+                            <label for="nom">First Name</label>
+                            <input type="text" id="nom" placeholder="Enter your first name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="prenom">Last Name</label>
+                            <input type="text" id="prenom" placeholder="Enter your last name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" placeholder="Enter your phone number" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Shipping Address</label>
+                            <input type="text" id="address" placeholder="Enter your full address" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="quantity">Quantity</label>
+                            <div class="quantity-selector">
+                                <button type="button" onclick="decreaseQuantity()">-</button>
+                                <input type="number" id="quantity" min="1" value="1" class="quantity-input" required>
+                                <button type="button" onclick="increaseQuantity()">+</button>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn checkout-btn">
+                            <i class="fas fa-lock"></i> Confirm Order
+                        </button>
+                    </form>
+                </div>
+
+                <div class="order-summary">
+                    <h2>Order Summary</h2>
+                    <div class="order-item">
+                        <img src="img/Tung-Tung-Tung-Sahur.webp" alt="Tung Tung Tung Sahur Key Ring">
+                        <div class="order-details">
+                            <h3>Tung Tung Tung Sahur Key Ring</h3>
+                            <p>7 TND</p>
+                        </div>
+                    </div>
+                    <div class="order-total">
+                        <p>Total: <span id="totalPrice">7 TND</span></p>
+                        <p style="color: #4CAF50; font-size: 0.9rem;">
+                            <i class="fas fa-shipping-fast"></i> Free shipping on 2+ items
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Tung Tung Tung Sahur Key Ring. All Rights Reserved.</p>
+        <div class="social-icons" style="margin-top: 15px;">
+            <a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-instagram"></i></a>
+            <a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        // Quantity controls
+        function increaseQuantity() {
+            const quantityInput = document.getElementById('quantity');
+            quantityInput.value = parseInt(quantityInput.value) + 1;
+            updateTotal();
+        }
+
+        function decreaseQuantity() {
+            const quantityInput = document.getElementById('quantity');
+            if (quantityInput.value > 1) {
+                quantityInput.value = parseInt(quantityInput.value) - 1;
+                updateTotal();
+            }
+        }
+
+        // Update total price
+        function updateTotal() {
+            const quantity = document.getElementById('quantity').value;
+            const totalPrice = 7 * quantity;
+            document.getElementById('totalPrice').textContent = totalPrice + ' TND';
+        }
+
+        // Update total when quantity changes
+        document.getElementById('quantity').addEventListener('change', updateTotal);
+
+        // Form submission
+        document.getElementById('checkoutForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Thank you for your order! We will contact you soon for payment confirmation.');
+            // In a real application, you would send this data to your server
+        });
+
+        // Button click effect
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', function () {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 150);
+            });
+        });
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzEQeRA-cmQHp9iqWQUm6iWp27ajR2FsC1VtMoAA-4-2TuUu3elN19OIoCZsArCPZMg/exec'; // Replace with your actual script URL
+
+        document.getElementById('checkoutForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const data = {
+                firstName: document.getElementById('nom').value,
+                lastName: document.getElementById('prenom').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                address: document.getElementById('address').value,
+                quantity: document.getElementById('quantity').value
+            };
+
+            fetch(scriptURL, {
+                method: 'POST',
+                body: JSON.stringify(data)
+            })
+                .then(response => response.json())
+                .then(result => {
+                    alert('Thank you for your order! Your data has been recorded.');
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    alert('Something went wrong. Please try again.');
+                });
+        });
+
+
+    </script>
+</body>
+
+</html>
