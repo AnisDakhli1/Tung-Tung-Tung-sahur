@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 </head>
 
 <body>
@@ -33,7 +34,8 @@
                 <p>Never miss sahur again! This fun key ring will remind you to wake up for your pre-dawn meal during
                     Ramadan.</p>
                 <button class="btn"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-                <button class="btn btn-secondary"><i class="fas fa-play"></i> Watch Demo</button>
+                <button class="btn btn-secondary"><i class="fas fa-play"
+                        onclick="document.getElementById('bgMusic').play()"></i> Watch Demo</button>
             </div>
             <div class="main-section-image">
                 <img src="img/Tung-Tung-Tung-Sahur.webp" alt="Tung Tung Tung Sahur Key Ring" class="product-image">
@@ -85,13 +87,13 @@
             <h3>Tung Tung Tung Sahur Key Ring</h3>
             <div class="price">7 TND</div>
             <p>+ FREE shipping if you buy two pices</p>
-            <button class="btn" style="width: 100%;"><i class="fas fa-shopping-cart"></i> Buy Now</button>
+            <button class="btn" onclick="window.location.href='buying_card.html' " style="width: 100%;"><i class="fas fa-shopping-cart"></i> Buy Now</button>
         </div>
     </section>
 
-    <audio autoplay loop></audio>
-        <source src="sound/Tung Tung Tung Sahur.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
+    <audio id="bgMusic" loop></audio>
+    <source src="sound/Tung Tung Tung Sahur.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
     </audio>
 
 
@@ -124,6 +126,13 @@
                 });
             });
         });
+        </script>
+        // Preload audio            
+        // Auto-play after first click (if needed)
+        document.body.addEventListener('click', () => {
+            const audio = document.getElementById('bgMusic');
+            audio.play().catch(e => console.log("Playback failed:", e));
+        }, { once: true }); // Runs only once
     </script>
 </body>
 
