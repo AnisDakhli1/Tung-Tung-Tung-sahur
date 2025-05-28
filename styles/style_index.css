@@ -174,9 +174,9 @@ body {
     animation: slider 4s linear infinite;
 }
 @keyframes slider {
-    0% { background-image:  url(Tung_shirt/tshirt-white.jpg); }
-    50% {background-image:  url(Tung_shirt/tshirt-brown.jpg) ; }
-    100% { background-image:  url(Tung_shirt/tshirt-yellow.jpg); }
+    0% { background-image:  url(/Tung_shirt/tshirt-white.jpg); }
+    50% {background-image:  url(/Tung_shirt/tshirt-brown.jpg) ; }
+    100% { background-image:  url(/Tung_shirt/tshirt-yellow.jpg); }
     
 }
 
