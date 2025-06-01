@@ -4,14 +4,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tung Tung Tung Sahur Key Ring - Fun Ramadan Accessory</title>
+    <title>Tung Tung Tung Sahur - Ramadan Collection</title>
     <link rel="stylesheet" href="styles/style_sahur.css">
     <link rel="stylesheet" href="styles/style_body.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Additional styles for multiple product sections */
+        .product-section {
+            padding: 60px 0;
+            text-align: center;
+        }
 
+        /* Alternating section colors */
+        .product-section:nth-child(odd) {
+            background-color: #fed679;
+        }
+
+        .product-section:nth-child(even) {
+            background-color: #c17441;
+            color: white;
+        }
+
+        /* Adjust text colors for dark sections */
+        .product-section:nth-child(even) h2,
+        .product-section:nth-child(even) .product-card h3,
+        .product-section:nth-child(even) .product-price {
+            color: white;
+        }
+
+        .product-section h2 {
+            font-size: 2rem;
+            color: #c17441;
+            margin-bottom: 40px;
+        }
+
+        .product-section:nth-child(even) h2 {
+            color: white;
+        }
+
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .product-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            width: 280px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+
+        .product-card h3 {
+            margin-bottom: 10px;
+            color: #c17441;
+        }
+
+        .product-price {
+            color: #c17441;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: 15px 0;
+        }
+
+        .section-divider {
+            height: 1px;
+            background-color: rgba(193, 116, 65, 0.2);
+            margin: 40px auto;
+            max-width: 1200px;
+        }
+
+        /* Adjust button colors for dark sections */
+        .product-section:nth-child(even) .btn {
+            background-color: white;
+            color: #c17441;
+        }
+
+        .product-section:nth-child(even) .btn:hover {
+            background-color: #f8e8c1;
+        }
+
+
+        /* Add this to your CSS */
+        .product-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            width: 280px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        /* Text color inside cards - always dark for contrast */
+        .product-card h3,
+        .product-card p,
+        .product-card .product-price {
+            color: #333;
+            /* Dark gray for better readability */
+        }
+
+        /* For dark sections, keep card background white but text dark */
+        .product-section:nth-child(even) .product-card {
+            background: white;
+        }
+
+        /* Button styling for dark sections */
+        .product-section:nth-child(even) .btn {
+            background-color: #c17441;
+            color: white;
+        }
+
+        .product-section:nth-child(even) .btn:hover {
+            background-color: #a05d34;
+        }
+    </style>
 </head>
 
 <body>
@@ -22,79 +151,171 @@
             </a>
         </div>
         <ul class="nav-bar-list">
-            <li class="list-elem"><a href="#"><i class="fas fa-shopping-cart"></i> Buy Now</a></li>
-            <li class="list-elem"><a href="#features"><i class="fas fa-info-circle"></i> Features</a></li>
-            <li class="list-elem"><a href="#pricing"><i class="fas fa-tag"></i> Pricing</a></li>
+            <li class="list-elem"><a href="#tshirts"><i class="fas fa-tshirt"></i> T-Shirts</a></li>
+            <li class="list-elem"><a href="#mugs"><i class="fas fa-mug-hot"></i> Mugs</a></li>
+            <li class="list-elem"><a href="#hoodies"><i class="fas fa-vest"></i> Hoodies</a></li>
+            <li class="list-elem"><a href="#stickers"><i class="fas fa-sticky-note"></i> Stickers</a></li>
         </ul>
     </nav>
 
-    <main class="main-section">
+    <main class="main-section" style="background-color: #fed679;">
         <div class="container">
             <div class="main-section-content">
-                <h1>Tung Tung Tung Sahur Key Ring</h1>
-                <p>Never miss sahur again! This fun key ring will remind you to wake up for your pre-dawn meal during
-                    Ramadan.</p>
-                <!-- <button class="btn"><i class="fas fa-shopping-cart"></i> Add to Cart</button> -->
-                <button class="btn" onclick="window.location.href='buying_card.html'"><i class="fas fa-shopping-cart"></i> Buy Now</button>
+                <h1>Tung Tung Tung Sahur Collection</h1>
+                <p>Explore our fun Ramadan collection featuring t-shirts, mugs, hoodies, and stickers - perfect for your
+                    sahur reminders and Ramadan celebrations!</p>
+                <button class="btn" onclick="window.location.href='#tshirts'"><i class="fas fa-tshirt"></i> Shop
+                    Now</button>
                 <button class="btn btn-secondary"><i class="fas fa-play"></i> Watch Demo</button>
             </div>
             <div class="main-section-image">
-                <img src="img/Tung-Tung-Tung-Sahur.webp" alt="Tung Tung Tung Sahur Key Ring" class="product-image">
+                <div class="product-image-animated"></div>
             </div>
         </div>
     </main>
 
-    <section class="product-highlights" id="features">
-        <h2>Why You'll Love This Key Ring</h2>
-        <div class="highlight-container">
-            <div class="highlight-box">
-                <i class="fas fa-bell"></i>
-                <h3>Fun Reminder</h3>
-                <p>Jingle sound reminds you not to oversleep during sahur time!</p>
+    <!-- T-Shirts Section -->
+    <section class="product-section" id="tshirts" style="background-color: #c17441; color: white;">
+        <h2>T-Shirts Collection</h2>
+        <div class="product-container">
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('/Tung_shirt/tshirt-white.jpg');"></div>
+                <h3>Classic White T-Shirt</h3>
+                <p>Comfortable cotton t-shirt with our signature Tung Tung Tung Sahur design.</p>
+                <div class="product-price">25 TND</div>
+                <button class="btn" onclick="window.location.href='buying_card.html?product=tshirt-white'"
+                    style="background-color: white; color: #c17441;">Buy Now</button>
             </div>
-            <div class="highlight-box">
-                <i class="fas fa-key"></i>
-                <h3>Durable Design</h3>
-                <p>Made with high-quality materials that last for years.</p>
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('/Tung_shirt/tshirt-brown.jpg');"></div>
+                <h3>Earth Brown T-Shirt</h3>
+                <p>Soft brown t-shirt featuring the Ramadan alarm clock design.</p>
+                <div class="product-price">25 TND</div>
+                <button class="btn" onclick="window.location.href='buying_card.html?product=tshirt-brown'"
+                    style="background-color: white; color: #c17441;">Buy Now</button>
             </div>
-            <div class="highlight-box">
-                <i class="fas fa-gift"></i>
-                <h3>Perfect Gift</h3>
-                <p>Great Ramadan gift for friends and family.</p>
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('/Tung_shirt/tshirt-yellow.jpg');"></div>
+                <h3>Sunshine Yellow T-Shirt</h3>
+                <p>Vibrant yellow t-shirt perfect for happy sahur mornings.</p>
+                <div class="product-price">25 TND</div>
+                <button class="btn" onclick="window.location.href='buying_card.html?product=tshirt-yellow'"
+                    style="background-color: white; color: #c17441;">Buy Now</button>
             </div>
         </div>
     </section>
 
-    <section class="testimonials">
+    <!-- Mugs Section -->
+    <section class="product-section" id="mugs" style="background-color: #fed679;">
+        <h2>Mugs Collection</h2>
+        <div class="product-container">
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('/images/mug-classic.jpg');"></div>
+                <h3>Classic Ramadan Mug</h3>
+                <p>Start your day with this beautiful sahur reminder mug.</p>
+                <div class="product-price">15 TND</div>
+                <button class="btn" onclick="window.location.href='buying_card.html?product=mug-classic'">Buy
+                    Now</button>
+            </div>
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('/images/mug-colorful.jpg');"></div>
+                <h3>Colorful Design Mug</h3>
+                <p>Vibrant colors to brighten up your sahur routine.</p>
+                <div class="product-price">18 TND</div>
+                <button class="btn" onclick="window.location.href='buying_card.html?product=mug-colorful'">Buy
+                    Now</button>
+            </div>
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('/images/mug-premium.jpg');"></div>
+                <h3>Premium Ceramic Mug</h3>
+                <p>High-quality ceramic mug with durable print.</p>
+                <div class="product-price">22 TND</div>
+                <button class="btn" onclick="window.location.href='buying_card.html?product=mug-premium'">Buy
+                    Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hoodies Section -->
+    <section class="product-section" id="hoodies" style="background-color: #c17441; color: white;">
+        <h2>Hoodies Collection</h2>
+        <div class="product-container">
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('/images/hoodie-black.jpg');"></div>
+                <h3>Black Comfort Hoodie</h3>
+                <p>Warm and cozy hoodie for cool Ramadan nights.</p>
+                <div class="product-price">65 TND</div>
+                <button class="btn" onclick="window.location.href='buying_card.html?product=hoodie-black'"
+                    style="background-color: white; color: #c17441;">Buy Now</button>
+            </div>
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('/images/hoodie-grey.jpg');"></div>
+                <h3>Grey Premium Hoodie</h3>
+                <p>Soft fabric with our signature Ramadan design.</p>
+                <div class="product-price">70 TND</div>
+                <button class="btn" onclick="window.location.href='buying_card.html?product=hoodie-grey'"
+                    style="background-color: white; color: #c17441;">Buy Now</button>
+            </div>
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('/images/hoodie-blue.jpg');"></div>
+                <h3>Blue Limited Edition</h3>
+                <p>Exclusive design only available during Ramadan.</p>
+                <div class="product-price">75 TND</div>
+                <button class="btn" onclick="window.location.href='buying_card.html?product=hoodie-blue'"
+                    style="background-color: white; color: #c17441;">Buy Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stickers Section -->
+    <section class="product-section" id="stickers" style="background-color: #fed679;">
+        <h2>Stickers Collection</h2>
+        <div class="product-container">
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('/images/sticker-pack1.jpg');"></div>
+                <h3>Sahur Reminder Pack</h3>
+                <p>Set of 5 waterproof stickers for your devices.</p>
+                <div class="product-price">10 TND</div>
+                <button class="btn" onclick="window.location.href='buying_card.html?product=sticker-pack1'">Buy
+                    Now</button>
+            </div>
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('/images/sticker-pack2.jpg');"></div>
+                <h3>Ramadan Vibes Pack</h3>
+                <p>Colorful set of 8 Ramadan-themed stickers.</p>
+                <div class="product-price">12 TND</div>
+                <button class="btn" onclick="window.location.href='buying_card.html?product=sticker-pack2'">Buy
+                    Now</button>
+            </div>
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('/images/sticker-premium.jpg');"></div>
+                <h3>Premium Vinyl Stickers</h3>
+                <p>High-quality vinyl stickers that last longer.</p>
+                <div class="product-price">15 TND</div>
+                <button class="btn" onclick="window.location.href='buying_card.html?product=sticker-premium'">Buy
+                    Now</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials" style="background-color: #c17441; color: white;">
         <h2>What People Are Saying</h2>
         <div class="testimonial-container">
-            <div class="testimonial">
-                <i class="fas fa-quote-left" style="color: #c17441;"></i>
-                <p>"This key ring is so fun! My brother love the Tung Tung Sahur and it actually helps us wake up for
-                    sahur."</p>
-                <p><strong>- Ashraf Jebalia</strong></p>
+            <div class="testimonial" style="background-color: rgba(255,255,255,0.1);">
+                <i class="fas fa-quote-left" style="color: white;"></i>
+                <p>"I love my Tung Tung Tung hoodie! It's so comfortable and the design is perfect for Ramadan."</p>
+                <p><strong>- Aisha Mohamed</strong></p>
             </div>
-            <div class="testimonial">
-                <i class="fas fa-quote-left" style="color: #c17441;"></i>
-                <p>"Bought this as a gift for my brother. He loves it and now all his friends want one too!"</p>
-                <p><strong>- Amine Jebalia</strong></p>
+            <div class="testimonial" style="background-color: rgba(255,255,255,0.1);">
+                <i class="fas fa-quote-left" style="color: white;"></i>
+                <p>"The mugs are my favorite purchase this Ramadan. My whole family wants one now!"</p>
+                <p><strong>- Omar Khan</strong></p>
             </div>
         </div>
     </section>
-
-    <section class="pricing" id="pricing">
-        <h2>Get Yours Today</h2>
-        <div class="price-box">
-            <h3>Tung Tung Tung Sahur Key Ring</h3>
-            <div class="price">7 TND</div>
-            <p>+ FREE shipping if you buy two pices</p>
-            <button class="btn" onclick="window.location.href='buying_card.html' " style="width: 100%;"><i class="fas fa-shopping-cart"></i> Buy Now</button>
-        </div>
-    </section>
-
 
     <footer>
-        <p>&copy; 2025 Tung Tung Tung Sahur Key Ring. All Rights Reserved.</p>
+        <p>&copy; 2025 Tung Tung Tung Sahur Collection. All Rights Reserved.</p>
         <div class="social-icons" style="margin-top: 15px;">
             <a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-facebook-f"></i></a>
             <a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-instagram"></i></a>
