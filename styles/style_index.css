@@ -163,7 +163,7 @@ body {
     transition: transform 0.3s ease;
 
 }
-.product-image-animated {
+.product-image-animated__1 {
     width: 100%;
     height: 400px; /* Set a fixed height */
     background-size: contain;
@@ -171,12 +171,28 @@ body {
     background-position: center;
     border-radius: 10px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    animation: slider 4s linear infinite;
+    animation: slider1 4s linear infinite;
 }
-@keyframes slider {
+@keyframes slider1 {
     0% { background-image:  url(/Tung_shirt/tshirt-white.jpg); }
     50% {background-image:  url(/Tung_shirt/tshirt-brown.jpg) ; }
     100% { background-image:  url(/Tung_shirt/tshirt-yellow.jpg); }
+    
+}
+.product-image-animated__2 {
+    width: 100%;
+    height: 400px; /* Set a fixed height */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    animation: slider2 4s linear infinite;
+}
+@keyframes slider2 {
+    0% { background-image:  url(/img/tshirt_bombardino_green.jpg); }
+    /* 50% {background-image:  url(/img/tshirt_bombardino_white.jpg) ; } */
+    100% { background-image:  url(/img/tshirt_bombardino_white.jpg); }
     
 }
 
