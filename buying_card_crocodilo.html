@@ -651,88 +651,64 @@
 
             async submitToGoogleSheets(data) {
                 try {
-                    console.log('Sending request to:', CONFIG.GOOGLE_SCRIPT_URL);
-                    console.log('Request data:', data);
-
                     const response = await fetch(CONFIG.GOOGLE_SCRIPT_URL, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
                         },
-                        body: JSON.stringify(data)
+                        body: JSON.stringify(data),
+                        mode: 'cors' // Important for CORS
                     });
-
-                    console.log('Response status:', response.status);
-                    console.log('Response headers:', [...response.headers.entries()]);
 
                     if (!response.ok) {
                         throw new Error(`HTTP error! status: ${response.status}`);
                     }
 
-                    let result;
-                    const contentType = response.headers.get('content-type');
-
-                    if (contentType && contentType.includes('application/json')) {
-                        result = await response.json();
-                    } else {
-                        // Sometimes Google Apps Script returns text
-                        const text = await response.text();
-                        console.log('Response text:', text);
-                        try {
-                            result = JSON.parse(text);
-                        } catch {
-                            throw new Error('Invalid response format from server');
-                        }
-                    }
-
-                    console.log('Response data:', result);
-
+                    const result = await response.json();
                     if (result.status !== 'success') {
                         throw new Error(result.message || 'Submission failed');
                     }
 
                     return result;
-
                 } catch (error) {
-                    console.error('Detailed submission error:', error);
-
-                    if (error.name === 'TypeError' && error.message.includes('fetch')) {
-                        throw new Error('Network error - please check your internet connection');
-                    }
-
-                    throw error;
+                    console.error('Submission error:', error);
+                    throw new Error(
+                        error.message.includes('Failed to fetch')
+                            ? 'Network error. Please check your connection.'
+                            : 'Order processing failed. Please try again later.'
+                    );
                 }
             }
 
-            showLoading(show) {
-                const overlay = document.getElementById('loadingOverlay');
-                if (overlay) {
-                    overlay.style.display = show ? 'flex' : 'none';
-                }
+        showLoading(show) {
+            const overlay = document.getElementById('loadingOverlay');
+            if (overlay) {
+                overlay.style.display = show ? 'flex' : 'none';
             }
+        }
 
-            showNotification(message, type = 'info') {
-                const notification = document.getElementById('notification');
-                const content = document.getElementById('notificationContent');
+        showNotification(message, type = 'info') {
+            const notification = document.getElementById('notification');
+            const content = document.getElementById('notificationContent');
 
-                if (notification && content) {
-                    content.textContent = message;
-                    notification.className = `notification ${type}`;
-                    notification.classList.add('show');
+            if (notification && content) {
+                content.textContent = message;
+                notification.className = `notification ${type}`;
+                notification.classList.add('show');
 
-                    setTimeout(() => {
-                        notification.classList.remove('show');
-                    }, 4000);
-                } else {
-                    // Fallback to alert if notification elements don't exist
-                    alert(message);
-                }
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 4000);
+            } else {
+                // Fallback to alert if notification elements don't exist
+                alert(message);
             }
+        }
 
-            showSuccessPage(orderID) {
-                const container = document.querySelector('.checkout-container');
-                if (container) {
-                    container.innerHTML = `
+        showSuccessPage(orderID) {
+            const container = document.querySelector('.checkout-container');
+            if (container) {
+                container.innerHTML = `
                 <div style="text-align: center; padding: 3rem; background: rgba(255,255,255,0.95); border-radius: 20px; backdrop-filter: blur(20px); box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
                     <div style="font-size: 4rem; color: #10b981; margin-bottom: 1rem;">
                         <i class="fas fa-check-circle"></i>
@@ -745,39 +721,39 @@
                     </button>
                 </div>
             `;
-                }
             }
+        }
 
-            addModernInteractions() {
-                // Add smooth focus effects to form inputs
-                document.querySelectorAll('.form-input').forEach(input => {
-                    input.addEventListener('focus', (e) => {
-                        e.target.style.transform = 'translateY(-2px)';
-                        e.target.style.boxShadow = '0 8px 25px rgba(0,0,0,0.15)';
-                    });
-
-                    input.addEventListener('blur', (e) => {
-                        e.target.style.transform = '';
-                        e.target.style.boxShadow = '';
-                    });
+        addModernInteractions() {
+            // Add smooth focus effects to form inputs
+            document.querySelectorAll('.form-input').forEach(input => {
+                input.addEventListener('focus', (e) => {
+                    e.target.style.transform = 'translateY(-2px)';
+                    e.target.style.boxShadow = '0 8px 25px rgba(0,0,0,0.15)';
                 });
 
-                // Add floating cart animation
-                const floatingCart = document.querySelector('.floating-cart');
-                if (floatingCart) {
-                    floatingCart.addEventListener('click', () => {
-                        floatingCart.style.transform = 'scale(1.2)';
-                        setTimeout(() => {
-                            floatingCart.style.transform = '';
-                        }, 200);
-                    });
-                }
+                input.addEventListener('blur', (e) => {
+                    e.target.style.transform = '';
+                    e.target.style.boxShadow = '';
+                });
+            });
 
-                // Add CSS for error styling and animations
-                if (!document.getElementById('checkout-styles')) {
-                    const style = document.createElement('style');
-                    style.id = 'checkout-styles';
-                    style.textContent = `
+            // Add floating cart animation
+            const floatingCart = document.querySelector('.floating-cart');
+            if (floatingCart) {
+                floatingCart.addEventListener('click', () => {
+                    floatingCart.style.transform = 'scale(1.2)';
+                    setTimeout(() => {
+                        floatingCart.style.transform = '';
+                    }, 200);
+                });
+            }
+
+            // Add CSS for error styling and animations
+            if (!document.getElementById('checkout-styles')) {
+                const style = document.createElement('style');
+                style.id = 'checkout-styles';
+                style.textContent = `
                 .form-input.error {
                     border-color: #ef4444 !important;
                     box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1) !important;
@@ -849,9 +825,9 @@
                     transform: scale(1.1);
                 }
             `;
-                    document.head.appendChild(style);
-                }
+                document.head.appendChild(style);
             }
+        }
         }
 
         // Global functions for quantity controls (referenced in HTML)
