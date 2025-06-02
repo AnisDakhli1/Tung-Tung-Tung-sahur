@@ -283,40 +283,33 @@
             async capturePhoneNumber(phoneNumber, isPageUnload = false) {
                 if (this.phoneNumberCaptured) return;
 
+                const data = {
+                    phone: phoneNumber,
+                    timestamp: new Date().toISOString(),
+                    product: this.product.name,
+                    color: this.product.color,
+                    quantity: this.product.quantity,
+                    type: 'phone_funnel',
+                    page_unload: isPageUnload
+                };
+
                 try {
-                    const data = {
-                        phone: phoneNumber,
-                        timestamp: new Date().toISOString(),
-                        product: this.product.name,
-                        color: this.product.color,
-                        quantity: this.product.quantity,
-                        type: 'phone_funnel',
-                        page_unload: isPageUnload
-                    };
+                    const url = new URL(CONFIG.PHONE_FUNNEL_URL);
+                    Object.keys(data).forEach(key => {
+                        url.searchParams.append(key, data[key]);
+                    });
 
-                    if (isPageUnload) {
-                        const url = new URL(CONFIG.PHONE_FUNNEL_URL);
-                        Object.keys(data).forEach(key => {
-                            url.searchParams.append(key, data[key]);
-                        });
-                        navigator.sendBeacon(url.toString());
-                    } else {
-                        const url = new URL(CONFIG.PHONE_FUNNEL_URL);
-                        Object.keys(data).forEach(key => {
-                            url.searchParams.append(key, data[key]);
-                        });
-
-                        const response = await fetch(url.toString(), { method: 'GET' });
-                        if (response.ok) {
-                            console.log('Phone number captured for funnel analysis');
-                        }
-                    }
+                    // ✅ Utiliser `sendBeacon` pour éviter les blocages CORS
+                    const sent = navigator.sendBeacon(url.toString());
+                    console.log('📡 Phone funnel sent via beacon:', sent);
 
                     this.phoneNumberCaptured = true;
+
                 } catch (error) {
-                    console.error('Failed to capture phone number:', error);
+                    console.error('🚨 Failed to capture phone number:', error);
                 }
             }
+
 
             validateField(e) {
                 const field = e.target;
