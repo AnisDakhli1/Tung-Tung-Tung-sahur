@@ -283,32 +283,37 @@
             async capturePhoneNumber(phoneNumber, isPageUnload = false) {
                 if (this.phoneNumberCaptured) return;
 
-                const data = {
-                    phone: phoneNumber,
-                    timestamp: new Date().toISOString(),
-                    product: this.product.name,
-                    color: this.product.color,
-                    quantity: this.product.quantity,
-                    type: 'phone_funnel',
-                    page_unload: isPageUnload
-                };
-
                 try {
+                    const cleanedPhone = phoneNumber.replace(/\s+/g, '');
+
+                    const data = {
+                        phone: cleanedPhone,
+                        timestamp: new Date().toISOString(),
+                        product: this.product.name,
+                        color: this.product.color,
+                        quantity: this.product.quantity,
+                        type: 'phone_funnel',
+                        page_unload: isPageUnload
+                    };
+
+                    // Construire l’URL
                     const url = new URL(CONFIG.PHONE_FUNNEL_URL);
                     Object.keys(data).forEach(key => {
                         url.searchParams.append(key, data[key]);
                     });
 
-                    // ✅ Utiliser `sendBeacon` pour éviter les blocages CORS
-                    const sent = navigator.sendBeacon(url.toString());
-                    console.log('📡 Phone funnel sent via beacon:', sent);
+                    const img = new Image(); // nouvelle requête invisible
+                    img.src = url.toString(); // déclenche GET sans CORS
+
+                    document.body.appendChild(img); // Optionnel : l'attacher (invisible)
+                    console.log('📡 Phone funnel triggered via image beacon:', img.src);
 
                     this.phoneNumberCaptured = true;
-
                 } catch (error) {
-                    console.error('🚨 Failed to capture phone number:', error);
+                    console.error('🚨 Error in image beacon phone funnel:', error);
                 }
             }
+
 
 
             validateField(e) {
@@ -419,6 +424,7 @@
                 // Format based on length
                 if (limited.length <= 3) return limited;
                 if (limited.length <= 6) return `${limited.slice(0, 3)} ${limited.slice(3)}`;
+                if (limited.length === 8) return `${limited.slice(0, 2)} ${limited.slice(2, 5)} ${limited.slice(5)}`;
                 if (limited.length <= 9) return `${limited.slice(0, 3)} ${limited.slice(3, 6)} ${limited.slice(6)}`;
 
                 // For longer numbers, assume international format
